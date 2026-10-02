@@ -1,3 +1,5 @@
+'use client'
+
 const products = [
   { name: 'Dog Mum Sweatshirt', price: '£28.00', tone: 'blush', mark: 'DOG MUM', symbol: '♡' },
   { name: 'Cat Mum Hoodie', price: '£32.00', tone: 'sage', mark: 'CAT MUM', symbol: '♡' },
