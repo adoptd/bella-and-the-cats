@@ -1,23 +1,19 @@
 'use client'
 
 const products = [
-  { name: 'Dog Mum Sweatshirt', price: '£28.00', tone: 'blush', mark: 'DOG MUM', symbol: '♡' },
-  { name: 'Cat Mum Hoodie', price: '£32.00', tone: 'sage', mark: 'CAT MUM', symbol: '♡' },
-  { name: 'Animal Lover T-Shirt', price: '£18.00', tone: 'cream', mark: 'ANIMAL\nLOVER', symbol: '♡' },
-  { name: 'Dog Lover Hoodie', price: '£32.00', tone: 'teal', mark: 'DOG\nLOVER', symbol: '♡' },
-  { name: 'Better Together T-Shirt', price: '£18.00', tone: 'white', mark: 'Better\nTogether', symbol: '♡' },
+  { name: 'Dog Mum Sweatshirt', price: '£28.00', tone: 'blush', mark: ['DOG MUM'], symbol: '♡', kind: 'sweatshirt' },
+  { name: 'Cat Mum Hoodie', price: '£32.00', tone: 'sage', mark: ['CAT MUM'], symbol: '♡', kind: 'hoodie' },
+  { name: 'Animal Lover T-Shirt', price: '£18.00', tone: 'cream', mark: ['ANIMAL', 'LOVER'], symbol: '♡', kind: 'tee' },
+  { name: 'Dog Lover Hoodie', price: '£32.00', tone: 'teal', mark: ['DOG', 'LOVER'], symbol: '♡', kind: 'hoodie' },
+  { name: 'Better Together T-Shirt', price: '£18.00', tone: 'white', mark: ['Better', 'Together'], symbol: '♡', kind: 'tee' },
 ]
 
 const pets = [
   { name: 'Bella', role: 'The original inspiration', image: '/pets/bella-bluebells.jpg' },
-  { name: 'Loki', role: 'The resident troublemaker', image: '/pets/loki.jpg' },
-  { name: 'Tyler', role: 'The handsome one', image: '/pets/tyler.jpg' },
+  { name: 'Loki', role: 'The box lover', image: '/pets/loki.jpg' },
+  { name: 'Tyler', role: 'The sofa specialist', image: '/pets/tyler.jpg' },
   { name: 'Leia', role: 'The tortie with attitude', image: '/pets/leia.jpg' },
 ]
-
-function Paw({ small = false }: { small?: boolean }) {
-  return <span className={small ? 'paw small' : 'paw'} aria-hidden="true">✦</span>
-}
 
 export default function Home() {
   return (
@@ -28,8 +24,14 @@ export default function Home() {
           <span className="brand-sub">&amp; The Cats</span>
           <span className="brand-paw">🐾</span>
         </a>
-        <nav>
-          <a className="active" href="#top">Home</a><a href="#shop">Shop</a><a href="#dog">Dog Lovers</a><a href="#cat">Cat Lovers</a><a href="#animal">Animal Lovers</a><a href="#story">About Us</a><a href="#footer">Contact</a>
+        <nav aria-label="Main navigation">
+          <a className="active" href="#top">Home</a>
+          <a href="#shop">Shop</a>
+          <a href="#dog">Dog Lovers</a>
+          <a href="#cat">Cat Lovers</a>
+          <a href="#animal">Animal Lovers</a>
+          <a href="#story">About Us</a>
+          <a href="#footer">Contact</a>
         </nav>
         <div className="header-icons" aria-hidden="true"><span>⌕</span><span>♙</span><span>🛍</span></div>
       </header>
@@ -45,10 +47,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="collections">
+      <section className="collections" aria-label="Shop by passion">
         <a className="collection-card" id="dog" href="#shop"><img src="/pets/bella-close.jpg" alt="Bella the dog"/><span>Dog Lovers <b>🐾</b></span></a>
         <a className="collection-card" id="cat" href="#shop"><img src="/pets/loki.jpg" alt="Loki the cat"/><span>Cat Lovers <b>🐾</b></span></a>
-        <a className="collection-card" id="animal" href="#shop"><img src="/pets/leia.jpg" alt="Leia the cat"/><span>Animal Lovers <b>🐾</b></span></a>
+        <a className="collection-card" id="animal" href="#shop"><img src="/pets/tyler.jpg" alt="Tyler the cat"/><span>Animal Lovers <b>🐾</b></span></a>
       </section>
 
       <section className="story" id="story">
@@ -60,9 +62,18 @@ export default function Home() {
       </section>
 
       <section className="featured" id="shop">
-        <div className="section-heading"><h2>Featured Products</h2><a href="#shop">View all products →</a></div>
+        <div className="featured-top"><div className="section-heading left"><h2>Featured Products</h2></div><a href="#shop">View all products →</a></div>
+        <p className="featured-intro">A few favourites for dog people, cat people and everyone who loves them all.</p>
         <div className="product-grid">
-          {products.map((p) => <article className="product" key={p.name}><div className={`garment ${p.tone}`}><div className="garment-neck"/><div className="garment-print">{p.mark.split('\n').map((line, i) => <span key={i}>{line}</span>)}<small>{p.symbol}</small></div></div><h3>{p.name}</h3><p>{p.price}</p></article>)}
+          {products.map((p) => <article className="product" key={p.name}>
+            <div className={`garment-wrap ${p.kind}`}>
+              <div className={`garment ${p.tone}`}>
+                <div className="garment-neck" />
+                <div className="garment-print">{p.mark.map((line) => <span key={line}>{line}</span>)}<small>{p.symbol}</small></div>
+              </div>
+            </div>
+            <h3>{p.name}</h3><p className="price">{p.price}</p>
+          </article>)}
         </div>
       </section>
 
@@ -72,7 +83,7 @@ export default function Home() {
       </section>
 
       <section className="newsletter">
-        <div><div className="newsletter-title">🐾 <span>Join the Bella &amp; The Cats family</span></div><p>Be the first to know about new designs, special offers and more.</p></div>
+        <div><div className="newsletter-title"><span className="newsletter-paw">🐾</span> <span>Join the Bella &amp; The Cats family</span></div><p>Be the first to know about new designs, special offers and more.</p></div>
         <form onSubmit={(e) => e.preventDefault()}><input type="email" placeholder="Your email address" aria-label="Email address"/><button type="submit">Sign Up</button></form>
       </section>
 
