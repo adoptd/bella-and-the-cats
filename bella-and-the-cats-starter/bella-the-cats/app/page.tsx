@@ -1,50 +1,80 @@
 const products = [
-  ['Dog Mum Sweatshirt', '£34.00', 'cream'],
-  ['Cat Mum Hoodie', '£36.00', 'black'],
-  ['Animal Lover T-Shirt', '£28.00', 'white'],
-  ['Dog Lover Hoodie', '£36.00', 'brown'],
-  ['Better Together T-Shirt', '£28.00', 'charcoal'],
-];
+  { name: 'Dog Mum Sweatshirt', price: '£28.00', tone: 'blush', mark: 'DOG MUM', symbol: '♡' },
+  { name: 'Cat Mum Hoodie', price: '£32.00', tone: 'sage', mark: 'CAT MUM', symbol: '♡' },
+  { name: 'Animal Lover T-Shirt', price: '£18.00', tone: 'cream', mark: 'ANIMAL\nLOVER', symbol: '♡' },
+  { name: 'Dog Lover Hoodie', price: '£32.00', tone: 'teal', mark: 'DOG\nLOVER', symbol: '♡' },
+  { name: 'Better Together T-Shirt', price: '£18.00', tone: 'white', mark: 'Better\nTogether', symbol: '♡' },
+]
+
+const pets = [
+  { name: 'Bella', role: 'The original inspiration', image: '/pets/bella-bluebells.jpg' },
+  { name: 'Loki', role: 'The resident troublemaker', image: '/pets/loki.jpg' },
+  { name: 'Tyler', role: 'The handsome one', image: '/pets/tyler.jpg' },
+  { name: 'Leia', role: 'The tortie with attitude', image: '/pets/leia.jpg' },
+]
+
+function Paw({ small = false }: { small?: boolean }) {
+  return <span className={small ? 'paw small' : 'paw'} aria-hidden="true">✦</span>
+}
 
 export default function Home() {
   return (
     <main>
-      <header className="nav">
-        <div className="brand">
-          <div className="brand-mark">♧</div>
-          <div><strong>BELLA &amp; THE CATS</strong><span>APPAREL FOR PET PEOPLE</span></div>
-        </div>
-        <nav><a href="#home">Home</a><a href="#shop">Shop⌄</a><a href="#dogs">Dog Lovers</a><a href="#cats">Cat Lovers</a><a href="#animals">Animal Lovers</a><a href="#story">About Us</a><a href="#contact">Contact</a></nav>
-        <div className="icons">⌕　♙　🛍</div>
+      <header className="site-header">
+        <a className="brand" href="#top" aria-label="Bella and The Cats home">
+          <span className="brand-script">Bella</span>
+          <span className="brand-sub">&amp; The Cats</span>
+          <span className="brand-paw">🐾</span>
+        </a>
+        <nav>
+          <a className="active" href="#top">Home</a><a href="#shop">Shop</a><a href="#dog">Dog Lovers</a><a href="#cat">Cat Lovers</a><a href="#animal">Animal Lovers</a><a href="#story">About Us</a><a href="#footer">Contact</a>
+        </nav>
+        <div className="header-icons" aria-hidden="true"><span>⌕</span><span>♙</span><span>🛍</span></div>
       </header>
 
-      <section id="home" className="hero">
-        <div className="hero-copy"><p className="eyebrow">BELLA &amp; THE CATS</p><h1>FOR THE LOVE<br/>OF ANIMALS</h1><p>Clothing for the people who know<br/>that pets aren't just pets — they're family.</p><a className="button" href="#shop">SHOP THE COLLECTION →</a></div>
-        <div className="hero-image" aria-label="Bella and cats lifestyle image" />
+      <section className="hero" id="top">
+        <img src="/pets/bella-bluebells.jpg" alt="Bella sitting among bluebells" />
+        <div className="hero-shade" />
+        <div className="hero-copy">
+          <div className="script-kicker">Bella &amp; The Cats <span>♥</span></div>
+          <h1>FOR THE LOVE<br />OF ANIMALS</h1>
+          <p>Clothing for the people who know<br className="desktop" /> that pets aren&apos;t just pets —<br className="desktop" /> they&apos;re family.</p>
+          <a className="button" href="#shop">SHOP THE COLLECTION <span>→</span></a>
+        </div>
       </section>
 
       <section className="collections">
-        <Collection id="dogs" title="DOG LOVERS" text="For the dog obsessed." image="🐕" />
-        <Collection id="cats" title="CAT LOVERS" text="For people who know who's really in charge." image="🐈" />
-        <Collection id="animals" title="ANIMAL LOVERS" text="For those who love them all." image="🐾" />
+        <a className="collection-card" id="dog" href="#shop"><img src="/pets/bella-close.jpg" alt="Bella the dog"/><span>Dog Lovers <b>🐾</b></span></a>
+        <a className="collection-card" id="cat" href="#shop"><img src="/pets/loki.jpg" alt="Loki the cat"/><span>Cat Lovers <b>🐾</b></span></a>
+        <a className="collection-card" id="animal" href="#shop"><img src="/pets/leia.jpg" alt="Leia the cat"/><span>Animal Lovers <b>🐾</b></span></a>
       </section>
 
-      <section id="story" className="story">
-        <div><p className="script">our story</p><h2>MEET BELLA &amp; THE CATS</h2><p>What started with Bella and three very opinionated cats — Loki, Tyler and Leia — inspired a clothing brand for people who understand just how much animals become part of our lives.</p><a className="button" href="#contact">OUR STORY →</a></div>
-        <div className="pet-row"><span>🐕<small>Bella</small></span><span>🐈<small>Loki</small></span><span>🐈<small>Tyler</small></span><span>🐈<small>Leia</small></span></div>
+      <section className="story" id="story">
+        <div className="section-heading"><span>♡</span><h2>Meet Bella &amp; The Cats</h2><span>♡</span></div>
+        <p className="intro">Bella, Loki, Tyler and Leia are the four-legged inspiration behind Bella &amp; The Cats —<br className="desktop" /> a clothing brand created for people who know that animals aren&apos;t just pets, they&apos;re family.</p>
+        <div className="pet-grid">
+          {pets.map((pet) => <article className="pet" key={pet.name}><div className="pet-photo"><img src={pet.image} alt={pet.name} /></div><div className="pet-name">{pet.name} <span>♡</span></div><p>{pet.role}</p><div className="pet-heart">♡</div></article>)}
+        </div>
       </section>
 
-      <section id="shop" className="featured"><div className="section-heading"><h2>FEATURED COLLECTION</h2><a href="#shop">Shop All →</a></div><div className="products">{products.map(([name, price, tone]) => <article className="product" key={name}><div className={`product-image ${tone}`}><span>{name.includes('Dog') ? 'DOG' : name.includes('Cat') ? 'CAT' : 'ANIMAL'}</span></div><h3>{name}</h3><p>{price}</p></article>)}</div></section>
+      <section className="featured" id="shop">
+        <div className="section-heading"><h2>Featured Products</h2><a href="#shop">View all products →</a></div>
+        <div className="product-grid">
+          {products.map((p) => <article className="product" key={p.name}><div className={`garment ${p.tone}`}><div className="garment-neck"/><div className="garment-print">{p.mark.split('\n').map((line, i) => <span key={i}>{line}</span>)}<small>{p.symbol}</small></div></div><h3>{p.name}</h3><p>{p.price}</p></article>)}
+        </div>
+      </section>
 
-      <section className="lifestyle"><div><h2>WEAR WHAT YOU LOVE.</h2><p>Celebrate the animals that make your life better.</p><a className="button" href="#shop">SHOP NOW →</a></div></section>
+      <section className="wear">
+        <img src="/pets/bella-bluebells.jpg" alt="Bella enjoying the outdoors" />
+        <div className="wear-overlay"><h2>♡ WEAR WHAT YOU LOVE.</h2><p>For the people who know that animals aren&apos;t just pets — they&apos;re family.</p></div>
+      </section>
 
-      <section id="contact" className="newsletter"><h2>JOIN THE BELLA &amp; THE CATS FAMILY</h2><p>New designs, new collections &amp; a little animal love.</p><form><input aria-label="Email address" placeholder="Your email address" type="email"/><button>JOIN US</button></form></section>
+      <section className="newsletter">
+        <div><div className="newsletter-title">🐾 <span>Join the Bella &amp; The Cats family</span></div><p>Be the first to know about new designs, special offers and more.</p></div>
+        <form onSubmit={(e) => e.preventDefault()}><input type="email" placeholder="Your email address" aria-label="Email address"/><button type="submit">Sign Up</button></form>
+      </section>
 
-      <footer><div><strong>BELLA &amp; THE CATS</strong><p>Apparel for pet people.</p></div><div className="footer-links"><a>About Us</a><a>Contact</a><a>Delivery</a><a>Returns</a><a>FAQs</a><a>Size Guide</a></div><div className="social">◎　f　p　♪　▶</div></footer>
+      <footer id="footer"><div className="footer-brand">Bella &amp; The Cats <small>APPAREL FOR PET PEOPLE</small></div><div className="footer-links"><a href="#story">About Us</a><a href="#footer">Contact</a><a href="#footer">Delivery</a><a href="#footer">Returns</a><a href="#footer">FAQs</a><a href="#footer">Size Guide</a></div><div className="social">◎ &nbsp; f &nbsp; ◉ &nbsp; ♪ &nbsp; ▶</div></footer>
     </main>
-  );
-}
-
-function Collection({ id, title, text, image }: { id: string; title: string; text: string; image: string }) {
-  return <a id={id} className="collection" href="#shop"><div className="collection-image">{image}</div><div><h2>{title}</h2><p>{text}</p><span>SHOP {title} →</span></div></a>;
+  )
 }
