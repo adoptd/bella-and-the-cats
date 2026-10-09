@@ -124,13 +124,11 @@ export default function Home() {
       {/* Top Announcement Bar */}
       <aside className="announcement-bar" aria-label="Promotions">
         <div className="announcement-track">
-          <span>FREE UK DELIVERY OVER £40</span>
+          <span>A SMALL BRAND WITH A BIG LOVE FOR PETS</span>
           <span className="dot">·</span>
-          <span>ETHICALLY CRAFTED APPAREL</span>
+          <span>INSPIRED BY BELLA, LOKI, TYLER &amp; LEIA</span>
           <span className="dot">·</span>
-          <span>100% ANIMAL LOVER APPROVED</span>
-          <span className="dot">·</span>
-          <span>EASY 30-DAY RETURNS</span>
+          <span>MADE FOR ANIMAL PEOPLE</span>
         </div>
       </aside>
 
@@ -185,7 +183,7 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">BELLA &amp; THE CATS <span>—</span> EST. WITH LOVE</p>
           <h1>For the love<br /><em>of animals.</em></h1>
-          <p className="hero-text">Thoughtful, sustainable clothing for people who know that pets aren't just pets — they're family.</p>
+          <p className="hero-text">Clothing inspired by the four characters who make our house a home — for people who know pets are family.</p>
           <div className="hero-actions">
             <a className="button" href="#shop">SHOP THE COLLECTION <span>↗</span></a>
             <a className="button-secondary" href="#story">MEET OUR PETS</a>
@@ -234,7 +232,7 @@ export default function Home() {
         <div className="story-intro">
           <p className="eyebrow dark">MEET THE FAMILY</p>
           <h2>Four personalities.<br /><em>One big love.</em></h2>
-          <p>Bella, Loki, Tyler and Leia are the true founders behind Bella &amp; The Cats — each inspiring their own little touch of warmth, mischief, and quality.</p>
+          <p>Bella, Loki, Tyler and Leia are the heart of our little brand. Their different personalities inspire everything from our name to the feeling we want every design to bring.</p>
         </div>
 
         <div className="pet-grid">
@@ -278,7 +276,7 @@ export default function Home() {
           </div>
           <a className="view-all-link" href="#shop">View all pieces <span>↗</span></a>
         </div>
-        <p className="featured-intro">Ethically stitched favourites for dog lovers, cat devotees, and all-around animal people.</p>
+        <p className="featured-intro">A growing collection inspired by everyday life with the animals we love.</p>
 
         <div className="product-grid">
           {products.map((p, index) => (
@@ -318,18 +316,18 @@ export default function Home() {
       <section className="values-banner" aria-label="Brand promises">
         <div className="value-item">
           <span className="value-icon">🐾</span>
-          <strong>Ethical &amp; Soft</strong>
-          <p>100% premium organic ring-spun cotton and cozy blends.</p>
+          <strong>Designed with Heart</strong>
+          <p>Thoughtful designs for the people whose pets are part of the family.</p>
         </div>
         <div className="value-item">
           <span className="value-icon">🌿</span>
-          <strong>Plastic-Free Delivery</strong>
-          <p>Shipped in recyclable, eco-conscious paper mailers.</p>
+          <strong>A Personal Touch</strong>
+          <p>A small business built around a genuine love of animals.</p>
         </div>
         <div className="value-item">
           <span className="value-icon">♡</span>
-          <strong>Giving Back</strong>
-          <p>A portion of every purchase supports animal rescue shelters.</p>
+          <strong>Made for Pet People</strong>
+          <p>From dog mums to cat people, there is a little something for every animal lover.</p>
         </div>
       </section>
 
@@ -350,7 +348,7 @@ export default function Home() {
         <div>
           <p className="eyebrow dark">STAY IN THE PACK</p>
           <h2>Come along for the journey.</h2>
-          <p>Receive exclusive early releases, pet community stories, and a welcome gift of 10% off your first order.</p>
+          <p>Be the first to hear about new designs, little behind-the-scenes moments, and updates from our furry family.</p>
         </div>
 
         {subscribed ? (
@@ -358,7 +356,7 @@ export default function Home() {
             <span className="success-icon">✓</span>
             <div>
               <strong>You're officially in the pack!</strong>
-              <p>Check your email inbox for your 10% welcome voucher.</p>
+              <p>Thanks for joining our little community.</p>
             </div>
           </div>
         ) : (
